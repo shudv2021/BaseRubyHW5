@@ -14,9 +14,12 @@ class Station
     @all_trains.delete(train)
   end
 
-  #def show_by_type(type)
-  #  @all_trains.filter { |tr| tr.type == type}
-  #end
+  def show_all_trains
+    puts "На станции #{self.station_name} находятся:"
+    @all_trains.each { |train| puts "*#{train.type}  Поезд №  #{train.train_num}*"}
+  end
+
+
 end
 
 # +Может принимать поезда (по одному за раз)

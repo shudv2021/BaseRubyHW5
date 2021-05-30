@@ -6,8 +6,7 @@ class Route
 
   def add_station (location, new_station)
     if @all_stations.include?(new_station)
-      puts "Такая станция уже есть на маршруте."
-
+      return nil
     else @all_stations.insert(location, new_station)
     end
   end
@@ -15,4 +14,5 @@ class Route
   def delete_station(station_del)
     @all_stations.delete(station_del)
   end
+
 end
