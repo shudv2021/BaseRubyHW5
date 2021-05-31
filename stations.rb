@@ -1,11 +1,11 @@
 class Station
-  attr_reader :station_name
-  attr_accessor :all_trains
+  attr_reader :station_name, :all_trains
+
   def initialize (station_name)
     @station_name = station_name
     @all_trains = []
   end
-
+  #Все методы используются другими классами
   def add_train(train)
     @all_trains<<train
   end
@@ -14,11 +14,9 @@ class Station
     @all_trains.delete(train)
   end
 
-  def show_all_trains
-    puts "На станции #{self.station_name} находятся:"
-    @all_trains.each { |train| puts "*#{train.type}  Поезд №  #{train.train_num}*"}
+  def return_all_trains
+    @all_trains
   end
-
 
 end
 

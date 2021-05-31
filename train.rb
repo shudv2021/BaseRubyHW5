@@ -1,4 +1,5 @@
 class Train
+
   attr_reader :train_num, :route, :current_station, :speed, :type, :total_carriages
   def initialize(train_num)
     @train_num = train_num
@@ -31,13 +32,25 @@ class Train
     @total_carriages.pop if @speed == 0
   end
 
-
   def sent_train(route)
+    @current_station.delete_train(self) if @current_station != nil
     @route = route
     @current_station = route.all_stations[0]
     @current_station.all_trains.push(self)
   end
 
+  def move_back
+    move(prev_station)
+  end
+
+  def move_forvard
+    move(next_station)
+  end
+
+  private
+  #Перенесено в рамках ДЗ можно было оставить и в публичной части, но поскольку есть более
+  # конкретные методы под наши задачи, нижележащие методы нигде кроме как в данном классе не
+  # исользуются
   def prev_station
     if @route.all_stations.index(@current_station) == 0
       return nil
@@ -65,16 +78,6 @@ class Train
     @current_station = station
     @current_station.all_trains.push(self)
   end
-
-  def move_back
-    move(prev_station)
-  end
-
-  def move_forvard
-    move(next_station)
-  end
-
-
 
 
   #+Имеет номер (произвольная строка) и тип (грузовой, пассажирский)

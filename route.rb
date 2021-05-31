@@ -1,5 +1,6 @@
 class Route
-  attr_accessor :all_stations
+  attr_reader :all_stations
+  #Все методы используются другими классами
   def initialize(start_staition, finish_station)
     @all_stations =[start_staition, finish_station]
   end
